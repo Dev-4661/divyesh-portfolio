@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Portfolio - Divyesh Boddu</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <header>
+    <nav>
+      <h1><span>Divyesh</span> Boddu</h1>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="hero" id="hero">
+    <img src="images/your-profile.jpg" alt="Your Profile" class="profile-img" />
+    <h2>Divyesh Boddu</h2>
+    <p class="title">AI Engineer & Python Developer</p>
+    <p class="description">Creating intelligent solutions with practical applications and innovative technologies.</p>
+    <div class="buttons">
+      <a href="#contact" class="btn-light">Contact Me</a>
+      <a href="#projects" class="btn-dark">View Projects</a>
+    </div>
+  </section>
+
+  <section class="services">
+    <div class="service-box">
+      <i class="fas fa-robot"></i>
+      <h3>AI Development</h3>
+      <p>Building intelligent systems to solve real-world problems.</p>
+    </div>
+    <div class="service-box">
+      <i class="fas fa-brain"></i>
+      <h3>Machine Learning</h3>
+      <p>Implementing advanced algorithms for data-driven solutions.</p>
+    </div>
+    <div class="service-box">
+      <i class="fas fa-code"></i>
+      <h3>Full-Stack Development</h3>
+      <p>Creating end-to-end applications with modern technologies.</p>
+    </div>
+  </section>
+
+  <section class="projects" id="projects">
+    <h2>Featured Projects</h2>
+    <div class="project-cards">
+      <div class="project">
+        <div class="project-img" style="background-color: #5f8df1;"></div>
+        <h4>Food Vision</h4>
+        <p>Food Vision helps users identify food from images, access nutrition facts, find recipes and restaurants, and chat with an AI assistant—all in one platform..</p>
+        <a href="#">Read More</a>
+      </div>
+      <div class="project">
+        <div class="project-img" style="background-color: #73dd83;"></div>
+        <h4>Leaf Disease Prediction</h4>
+        <p>Leaf Disease Prediction uses machine learning to identify plant diseases from images, providing farmers with actionable insights.</p>
+        <a href="#">Read More</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="about" id="about">
+    <h2>About Me</h2>
+    <div class="about-content">
+      <p>I'm an AI Engineer and Python Developer passionate about creating intelligent solutions that solve real-world problems. With expertise in machine learning, full-stack development, and AI implementation, I bring ideas to life through code.</p>
+      <div class="skills">
+        <span class="skill">Python</span>
+        <span class="skill">Machine Learning</span>
+        <span class="skill">AI Development</span>
+        <span class="skill">Full-Stack Development</span>
+        <span class="skill">Data Science</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="experience" id="experience">
+    <h2>Experience</h2>
+    <div class="experience-content">
+      <div class="experience-item">
+        <h3>AI Developer</h3>
+        <p class="company">RootStatix</p>
+        <p class="period">June-present</p>
+        <p>Developing cutting-edge AI solutions and implementing AI-Agents to solve real-world problems.</p>
+      </div>
+      <div class="experience-item">
+        <h3>Python Developer</h3>
+        <p class="company">College web Intern.</p>
+        <p class="period">2022 - 2023</p>
+        <p>Spearheaded a complete website overhaul for my college, dramatically improving functionality and user experience. I tackled everything—from updating content and resolving glitches to implementing new features that made browsing more intuitive and seamless..</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact" id="contact">
+    <h2>Get In Touch</h2>
+    <div class="contact-content">
+      <p>I'm always interested in new opportunities and collaborations. Let's connect!</p>
+      <div class="contact-info">
+        <p><i class="fas fa-envelope"></i> <a href="mailto:divyesh.boddu2003@gmail.com">divyesh.boddu2003@gmail.com</a></p>
+        <p><i class="fas fa-phone"></i> <a href="tel:+919136226559">+91-9136226559</a></p>
+        <p><i class="fas fa-map-marker-alt"></i> Mumbai, Maharashtra</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="icons">
+      <i class="fab fa-github" onclick="openLink('https://github.com/Dev-4661')"></i>
+      <i class="fab fa-linkedin" onclick="openLink('https://www.linkedin.com/in/divyesh03/')"></i>
+      <i class="fas fa-envelope" onclick="openLink('mailto:divyesh.boddu2003@gmail.com')"></i>
+    </div>
+    <p>© 2025 Divyesh Boddu. All rights reserved.</p>
+  </footer>
+
+  <script>
+    // Smooth scrolling for navigation links
+    document.addEventListener('DOMContentLoaded', function() {
+      // Add click events to navigation links
+      const navLinks = document.querySelectorAll('nav ul li a');
+      navLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+          e.preventDefault();
+          const href = this.getAttribute('href');
+          if (href === '#' || href === '') {
+            // Scroll to top for Home link
+            window.scrollTo({
+              top: 0,
+              behavior: 'smooth'
+            });
+          } else if (href.startsWith('#')) {
+            const targetId = href.substring(1);
+            scrollToSection(targetId);
+          }
+        });
+      });
+
+      // Add click events to hero buttons
+      const heroButtons = document.querySelectorAll('.hero .btn-light, .hero .btn-dark');
+      heroButtons.forEach(button => {
+        button.addEventListener('click', function(e) {
+          e.preventDefault();
+          const href = this.getAttribute('href');
+          if (href.startsWith('#')) {
+            const targetId = href.substring(1);
+            scrollToSection(targetId);
+          }
+        });
+      });
+
+      // Add click events to project "Read More" links
+      const projectLinks = document.querySelectorAll('.project a');
+      projectLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+          e.preventDefault();
+          showProjectDetails(this);
+        });
+      });
+
+      // Add hover effects to service boxes
+      const serviceBoxes = document.querySelectorAll('.service-box');
+      serviceBoxes.forEach(box => {
+        box.addEventListener('mouseenter', function() {
+          this.style.transform = 'translateY(-5px)';
+          this.style.transition = 'transform 0.3s ease';
+        });
+        
+        box.addEventListener('mouseleave', function() {
+          this.style.transform = 'translateY(0)';
+        });
+      });
+
+      // Add hover effects to project cards
+      const projectCards = document.querySelectorAll('.project');
+      projectCards.forEach(card => {
+        card.addEventListener('mouseenter', function() {
+          this.style.transform = 'translateY(-5px)';
+          this.style.transition = 'transform 0.3s ease';
+        });
+        
+        card.addEventListener('mouseleave', function() {
+          this.style.transform = 'translateY(0)';
+        });
+      });
+
+      // Update navigation based on scroll position
+      window.addEventListener('scroll', function() {
+        updateActiveNavigation();
+      });
+
+      // Initialize home page view (remove custom initialization)
+    });
+
+    // Function to smooth scroll to sections
+    function scrollToSection(sectionId) {
+      if (sectionId === 'home' || sectionId === '' || sectionId === 'hero') {
+        // Scroll to top for home/hero
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        });
+        return;
+      }
+      
+      const section = document.getElementById(sectionId);
+      if (section) {
+        section.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+        });
+      }
+    }
+
+    // Function to open external links
+    function openLink(url) {
+      window.open(url, '_blank');
+    }
+
+    // Function to show project details
+    function showProjectDetails(link) {
+      const project = link.closest('.project');
+      const projectTitle = project.querySelector('h4').textContent;
+      
+      // Create modal or alert with project details
+      alert(`Opening details for: ${projectTitle}\n\nThis would typically open a detailed project page or modal with more information about the project, including technologies used, live demo links, and GitHub repository.`);
+      
+      // You can replace this with a proper modal implementation
+    }
+
+    // Function to update active navigation
+    function updateActiveNavigation() {
+      const sections = ['hero', 'about', 'experience', 'projects', 'contact'];
+      const navLinks = document.querySelectorAll('nav ul li a');
+      
+      let currentSection = '';
+      
+      // Check if we're at the very top of the page
+      if (window.scrollY < 50) {
+        currentSection = 'hero';
+      } else {
+        // Check which section is currently in view
+        sections.forEach(sectionId => {
+          const section = document.getElementById(sectionId);
+          if (section) {
+            const rect = section.getBoundingClientRect();
+            if (rect.top <= 100 && rect.bottom >= 100) {
+              currentSection = sectionId;
+            }
+          }
+        });
+      }
+
+      // Update navigation active state
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        const href = link.getAttribute('href');
+        
+        // Handle Home link (# or empty href)
+        if ((href === '#' || href === '') && currentSection === 'hero') {
+          link.classList.add('active');
+        }
+        // Handle other section links
+        else if (href === `#${currentSection}`) {
+          link.classList.add('active');
+        }
+      });
+    }
+
+    // Add keyboard navigation
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        // Close any open modals (if you implement them)
+        console.log('Escape key pressed');
+      }
+    });
+
+    // Add smooth animations when elements come into view
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver(function(entries) {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, observerOptions);
+
+    // Observe elements for animation
+    document.addEventListener('DOMContentLoaded', function() {
+      const animatedElements = document.querySelectorAll('.service-box, .project, .experience-item');
+      animatedElements.forEach(el => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(20px)';
+        el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        observer.observe(el);
+      });
+    });
+  </script>
+</body>
+</html>
