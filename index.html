@@ -14,11 +14,11 @@
     <nav>
       <h1><span>Divyesh</span> Boddu</h1>
       <ul>
-        <li><a href="#">Home</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#experience">Experience</a></li>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="experience.html">Experience</a></li>
         <li><a href="#projects">Projects</a></li>
-        <li><a href="#contact">Contact</a></li>
+        <li><a href="contact.html">Contact</a></li>
       </ul>
     </nav>
   </header>
@@ -34,23 +34,7 @@
     </div>
   </section>
 
-  <section class="services">
-    <div class="service-box">
-      <i class="fas fa-robot"></i>
-      <h3>AI Development</h3>
-      <p>Building intelligent systems to solve real-world problems.</p>
-    </div>
-    <div class="service-box">
-      <i class="fas fa-brain"></i>
-      <h3>Machine Learning</h3>
-      <p>Implementing advanced algorithms for data-driven solutions.</p>
-    </div>
-    <div class="service-box">
-      <i class="fas fa-code"></i>
-      <h3>Full-Stack Development</h3>
-      <p>Creating end-to-end applications with modern technologies.</p>
-    </div>
-  </section>
+
 
   <section class="projects" id="projects">
     <h2>Featured Projects</h2>
@@ -70,49 +54,7 @@
     </div>
   </section>
 
-  <section class="about" id="about">
-    <h2>About Me</h2>
-    <div class="about-content">
-      <p>I'm an AI Engineer and Python Developer passionate about creating intelligent solutions that solve real-world problems. With expertise in machine learning, full-stack development, and AI implementation, I bring ideas to life through code.</p>
-      <div class="skills">
-        <span class="skill">Python</span>
-        <span class="skill">Machine Learning</span>
-        <span class="skill">AI Development</span>
-        <span class="skill">Full-Stack Development</span>
-        <span class="skill">Data Science</span>
-      </div>
-    </div>
-  </section>
 
-  <section class="experience" id="experience">
-    <h2>Experience</h2>
-    <div class="experience-content">
-      <div class="experience-item">
-        <h3>AI Developer</h3>
-        <p class="company">RootStatix</p>
-        <p class="period">June-present</p>
-        <p>Developing cutting-edge AI solutions and implementing AI-Agents to solve real-world problems.</p>
-      </div>
-      <div class="experience-item">
-        <h3>Python Developer</h3>
-        <p class="company">College web Intern.</p>
-        <p class="period">2022 - 2023</p>
-        <p>Spearheaded a complete website overhaul for my college, dramatically improving functionality and user experience. I tackled everything—from updating content and resolving glitches to implementing new features that made browsing more intuitive and seamless..</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="contact" id="contact">
-    <h2>Get In Touch</h2>
-    <div class="contact-content">
-      <p>I'm always interested in new opportunities and collaborations. Let's connect!</p>
-      <div class="contact-info">
-        <p><i class="fas fa-envelope"></i> <a href="mailto:divyesh.boddu2003@gmail.com">divyesh.boddu2003@gmail.com</a></p>
-        <p><i class="fas fa-phone"></i> <a href="tel:+919136226559">+91-9136226559</a></p>
-        <p><i class="fas fa-map-marker-alt"></i> Mumbai, Maharashtra</p>
-      </div>
-    </div>
-  </section>
 
   <footer>
     <div class="icons">
@@ -124,23 +66,41 @@
   </footer>
 
   <script>
+    // Function to handle navigation
+    function handleNavigation(e, href) {
+      if (!href) return true;
+      
+      // Don't prevent default for external links or links with file extensions
+      if (href.startsWith('http') || href.includes('.html') || href.includes('#')) {
+        return true;
+      }
+      
+      e.preventDefault();
+      
+      if (href === '#' || href === '') {
+        // Scroll to top for Home link
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        });
+      } else if (href.startsWith('#')) {
+        const targetId = href.substring(1);
+        scrollToSection(targetId);
+      }
+      
+      return false;
+    }
+    
     // Smooth scrolling for navigation links
     document.addEventListener('DOMContentLoaded', function() {
       // Add click events to navigation links
       const navLinks = document.querySelectorAll('nav ul li a');
       navLinks.forEach(link => {
         link.addEventListener('click', function(e) {
-          e.preventDefault();
           const href = this.getAttribute('href');
-          if (href === '#' || href === '') {
-            // Scroll to top for Home link
-            window.scrollTo({
-              top: 0,
-              behavior: 'smooth'
-            });
-          } else if (href.startsWith('#')) {
-            const targetId = href.substring(1);
-            scrollToSection(targetId);
+          if (!handleNavigation(e, href) && !href.startsWith('http')) {
+            // If it's an internal link that wasn't handled, navigate to it
+            window.location.href = href;
           }
         });
       });

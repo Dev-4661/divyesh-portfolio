@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Experience - Divyesh Boddu</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <header>
+    <nav>
+      <h1><span>Divyesh</span> Boddu</h1>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="experience.html" class="active">Experience</a></li>
+        <li><a href="index.html#projects">Projects</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="experience-page">
+    <section class="experience" id="experience">
+      <h2>Professional Experience</h2>
+      
+      <div class="experience-content">
+        <div class="experience-item">
+          <div class="experience-header">
+            <h3>AI Developer</h3>
+            <span class="period">June 2023 - Present</span>
+          </div>
+          <p class="company">RootStatix</p>
+          <ul class="responsibilities">
+            <li>Developed and deployed AI models for real-world applications, improving efficiency by 40%</li>
+            <li>Implemented AI agents to automate complex workflows and decision-making processes</li>
+            <li>Collaborated with cross-functional teams to integrate AI solutions into existing systems</li>
+            <li>Conducted research on state-of-the-art AI techniques and implemented proof-of-concepts</li>
+            <li>Optimized model performance and reduced inference time by 30%</li>
+          </ul>
+        </div>
+
+        <div class="experience-item">
+          <div class="experience-header">
+            <h3>Python Developer</h3>
+            <span class="period">2022 - 2023</span>
+          </div>
+          <p class="company">College Web Intern</p>
+          <ul class="responsibilities">
+            <li>Spearheaded a complete website overhaul, improving functionality and user experience</li>
+            <li>Developed and maintained web applications using modern frameworks and technologies</li>
+            <li>Implemented responsive design principles to ensure cross-device compatibility</li>
+            <li>Optimized website performance, reducing load times by 50%</li>
+            <li>Resolved critical bugs and implemented new features based on user feedback</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="certifications">
+      <h2>Certifications</h2>
+      <div class="certification-grid">
+        <div class="certification-item">
+          <h3>Deep Learning Specialization</h3>
+          <p class="issuer">DeepLearning.AI</p>
+          <p class="date">2023</p>
+        </div>
+        <div class="certification-item">
+          <h3>Machine Learning A-Z™: AI, Python & R</h3>
+          <p class="issuer">Udemy</p>
+          <p class="date">2022</p>
+        </div>
+        <div class="certification-item">
+          <h3>Full Stack Web Development</h3>
+          <p class="issuer">The App Brewery</p>
+          <p class="date">2021</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="icons">
+      <i class="fab fa-github" onclick="openLink('https://github.com/Dev-4661')"></i>
+      <i class="fab fa-linkedin" onclick="openLink('https://www.linkedin.com/in/divyesh03/')"></i>
+      <i class="fas fa-envelope" onclick="openLink('mailto:divyesh.boddu2003@gmail.com')"></i>
+    </div>
+    <p>© 2025 Divyesh Boddu. All rights reserved.</p>
+  </footer>
+
+  <script>
+    // Function to handle navigation
+    function handleNavigation(e, href) {
+      if (!href) return true;
+      
+      // Don't prevent default for external links or links with file extensions
+      if (href.startsWith('http') || href.includes('.html') || href.includes('#')) {
+        return true;
+      }
+      
+      e.preventDefault();
+      
+      if (href === '#' || href === '') {
+        // Scroll to top for Home link
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        });
+      } else if (href.startsWith('#')) {
+        const targetId = href.substring(1);
+        scrollToSection(targetId);
+      }
+      
+      return false;
+    }
+    
+    // Smooth scrolling for navigation links
+    document.addEventListener('DOMContentLoaded', function() {
+      // Add click events to navigation links
+      const navLinks = document.querySelectorAll('nav ul li a');
+      navLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+          const href = this.getAttribute('href');
+          if (!handleNavigation(e, href) && !href.startsWith('http')) {
+            // If it's an internal link that wasn't handled, navigate to it
+            window.location.href = href;
+          }
+        });
+      });
+    });
+
+    // Function to smooth scroll to sections
+    function scrollToSection(sectionId) {
+      const section = document.getElementById(sectionId);
+      if (section) {
+        window.scrollTo({
+          top: section.offsetTop - 80, // Adjust for header height
+          behavior: 'smooth'
+        });
+      }
+    }
+
+    // Function to open external links
+    function openLink(url) {
+      window.open(url, '_blank');
+    }
+  </script>
+</body>
+</html>
