@@ -34,7 +34,7 @@
     <p class="title">AI Engineer & Python Developer</p>
     <p class="description">Creating intelligent solutions with practical applications and innovative technologies.</p>
     <div class="buttons">
-      <a href="#contact" class="btn-light">Contact Me</a>
+      <a href="contact.html" class="btn-light">Contact Me</a>
       <a href="#projects" class="btn-dark">View Projects</a>
     </div>
   </section>
@@ -138,12 +138,13 @@
       const heroButtons = document.querySelectorAll('.hero .btn-light, .hero .btn-dark');
       heroButtons.forEach(button => {
         button.addEventListener('click', function(e) {
-          e.preventDefault();
           const href = this.getAttribute('href');
           if (href.startsWith('#')) {
+            e.preventDefault();
             const targetId = href.substring(1);
             scrollToSection(targetId);
           }
+          // For external links like contact.html, let the default behavior happen
         });
       });
 
@@ -228,7 +229,7 @@
 
     // Function to update active navigation
     function updateActiveNavigation() {
-      const sections = ['hero', 'about', 'experience', 'projects', 'contact'];
+      const sections = ['hero', 'projects']; // Only sections that exist on homepage
       const navLinks = document.querySelectorAll('nav ul li a');
       
       let currentSection = '';
